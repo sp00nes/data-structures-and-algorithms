@@ -35,7 +35,8 @@ For example: 'Cat' would come before 'apple'
 ------------------------------------------------------------------------------------------------ */
 
 const sortNames = (arr) => {
-  // Solution code here...
+  let temp = arr.sort();
+  return temp;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -47,7 +48,8 @@ HINT: Beware... JS default is "Lexical" ordering.
 ------------------------------------------------------------------------------------------------ */
 
 const sortNumbers = (arr) => {
-  // Solution code here...
+  let temp = arr.sort((a, b) => {return a-b;});
+  return temp;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -59,7 +61,8 @@ HINT: Do it with a custom sort callback, not with using `.reverse()`. ;)
 ------------------------------------------------------------------------------------------------ */
 
 const sortBackwards = (arr) => {
-  // Solution code here...
+  let temp = arr.sort((a, b) => {return b-a;});
+  return temp;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -73,7 +76,8 @@ For example, ['Alphabet', 'Zebra', 'alphabet', 'carrot'] is correctly sorted.
 ------------------------------------------------------------------------------------------------ */
 
 const alphabetize = (arr) => {
-  // Solution code here...
+  let temp = arr.sort();
+  return temp;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -90,7 +94,10 @@ Here is an example of the input:
 ------------------------------------------------------------------------------------------------ */
 
 const sortByPrice = (arr) => {
-  // Solution code here...
+  let temp = arr.sort((a, b) => {
+    return a.price-b.price;
+  });
+  return temp;
 };
 
 /* ------------------------------------------------------------------------------------------------
