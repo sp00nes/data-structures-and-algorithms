@@ -22,7 +22,8 @@ function lower(str) {
 }
 
 const updateAnimal = (arr, callback) => {
-  // Solution code here...
+  let tempArr = arr.map(callback);
+  return tempArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
