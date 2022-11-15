@@ -8,7 +8,7 @@ Write a function called addTwo that takes in an array and adds two to every valu
 
 const addTwo = (arr) => {
   let tempArr = [];
-  for (let i = 0; 1 < arr.length; i++){
+  for (let i = 0; i < arr.length; i++){
     tempArr[i] = arr[i] + 2;
   }
   return tempArr;
@@ -23,7 +23,7 @@ For example, typeNum([1, 'bob' ,3]) returns [1,3].
 ------------------------------------------------------------------------------------------------ */
 
 const typeNum = (arr) => {
-  let result = arr.filter(isString => typeof(isString) === 'number');
+  let result = arr.filter(isNum => typeof(isNum) === 'number');
   return result;
 };
 
@@ -62,7 +62,7 @@ For example, notInFirstArray([1,2,3], [1,2,3,4]) returns [4].
 ------------------------------------------------------------------------------------------------ */
 
 const notInFirstArray = (forbiddenValues, arr) => {
-  let result = arr.filter(array => array !== forbiddenValues);
+  let result = arr.filter(arrayItem => !forbiddenValues.includes(arrayItem));
   return result;
 };
 
