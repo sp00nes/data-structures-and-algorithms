@@ -12,8 +12,8 @@ Note the space in between first and last names.
 You can assume that neither firstName nor lastName will be blank
 ------------------------------------------------------------------------------------------------ */
 const toLastNames = people => {
-  let tempArr = people.map(element => element.firstName );
-  tempArr = people.map(name => name.firstName + name.lastName);
+  let tempArr = people.map(elem => `${elem.firstName} ${elem.lastName}`);
+  return tempArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -24,7 +24,9 @@ Write a function named addValues that, given an array of numbers as input, uses 
 ------------------------------------------------------------------------------------------------ */
 
 const addValues = (arr) => {
-  // Solution code here...
+  const initValue = 0;
+  let tempArr = arr.reduce((previousValue, currentValue) => previousValue + currentValue, initValue);
+  return tempArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -40,7 +42,10 @@ Write a function named addPurchases that, given an array of objects as input, us
 ------------------------------------------------------------------------------------------------ */
 
 const addPurchases = (arr) => {
-  // Solution code here...
+  const initValue = 0;
+  let mapArr = arr.map(elem => elem.purchasePrice);
+  let reduceArr = mapArr.reduce((previousValue, currentValue) => previousValue + currentValue, initValue);
+  return reduceArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -52,7 +57,9 @@ Note: You may not use the array's built-in length property.
 ------------------------------------------------------------------------------------------------ */
 
 const countNumberOfElements = (arr) => {
-  // Solution code here...
+  const initValue = 0;
+  let int = arr.reduce((num) => num + 1, initValue);
+  return int;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -112,7 +119,9 @@ let starWarsData = [{
 }];
 
 const returnNames = (arr) => {
-  // Solution code here...
+  let tempArr = arr.reduce(
+    (acc, obj) => [...acc, obj.name], []);
+  return tempArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -124,7 +133,10 @@ Note: You must use reduce for this challenge. You may not use the built-in .reve
 ------------------------------------------------------------------------------------------------ */
 
 const reversedString = (str) => {
-  // Solution code here...
+  let flippedArr = [...str];
+  let tempArr = flippedArr.reduce(
+    (acc, obj) => [ obj, ...acc], []).join('');
+  return tempArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
