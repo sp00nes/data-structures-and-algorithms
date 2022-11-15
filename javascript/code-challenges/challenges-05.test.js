@@ -135,7 +135,7 @@ Note: You must use reduce for this challenge. You may not use the built-in .reve
 const reversedString = (str) => {
   let flippedArr = [...str];
   let tempArr = flippedArr.reduce(
-    (acc, obj) => [ obj, ...acc], []);
+    (acc, obj) => [ obj, ...acc], []).join('');
   return tempArr;
 };
 
