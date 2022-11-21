@@ -10,9 +10,9 @@ E.g. [4,2,7,5,9,2] -> 9
 ------------------------------------------------------------------------------------------------ */
 const maxInArray = (arr) => {
   return arr.reduce((acc, val) => {
-    acc = ( acc === undefined || val > acc ) ? val : acc;
+    acc = (acc === undefined || val > acc) ? val : acc;
     return parseInt(acc);
-}, []);
+  }, []);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -22,7 +22,8 @@ Write a function named getCourseKeys that takes in the courseInfo object and ret
 
 For example: (['name', 'duration', 'topics', 'finalExam']).
 ------------------------------------------------------------------------------------------------ */
-const courseInfo = { name: 'Code 301', duration: { dayTrack: '4 weeks', eveningTrack: '8 weeks'},
+const courseInfo = {
+  name: 'Code 301', duration: { dayTrack: '4 weeks', eveningTrack: '8 weeks' },
   topics: ['SMACSS', 'APIs', 'NodeJS', 'SQL', 'jQuery', 'functional programming'],
   finalExam: true
 };
