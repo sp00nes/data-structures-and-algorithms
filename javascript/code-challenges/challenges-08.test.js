@@ -53,18 +53,7 @@ let characters = [
 ];
 
 const sortByChildren = (charArray) => {
-  let returnArray = charArray.sort((a, b) => {
-    const childrenA = a.children;
-    const childrenB = b.children;
-    if (childrenA < childrenB) {
-      return -1;
-    }
-    if (childrenA > childrenB) {
-      return 1;
-    }
-    return -1;
-  });
-  return returnArray;
+  return charArray.sort((a,b) => a.children.length - b.children.length || a.house.localeCompare(b.house));
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -75,7 +64,8 @@ Write a function named containsW that takes in a string. This function should us
 ------------------------------------------------------------------------------------------------ */
 
 const containsW = (str) => {
-  // Solution code here...
+  let regex = /w/;
+  return regex.test(str) ? true : false;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -91,7 +81,8 @@ For example:
 ------------------------------------------------------------------------------------------------ */
 
 const isNum = (input) => {
-  // Solution code here...
+  let regex = /\d/;
+  return regex.test(input) ? true : false;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -102,7 +93,8 @@ Write a function named containsWorld that takes in a string or number of any len
 ------------------------------------------------------------------------------------------------ */
 
 const containsWorld = (input) => {
-  // Solution code here...
+  let regex = /(?:world)/;
+  return regex.test(input) ? true : false;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -114,7 +106,10 @@ Return an array containing all the matches.
 ------------------------------------------------------------------------------------------------ */
 
 const isCapitalized = (str) => {
-  // Solution code here...
+  let regex = /^[A-Z]/;
+  let caps = [];
+  str.split(' ').forEach(word => regex.test(word) ? caps.push(word.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"")) : null);
+  return caps;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -124,7 +119,10 @@ Write a function named citiesAtoJ that takes in an array of city names and uses 
 ------------------------------------------------------------------------------------------------ */
 
 const citiesAtoJ = (arr) => {
-  // Solution code here...
+  let regex = /^[A-J]/;
+  let cities = [];
+  arr.forEach(city => regex.test(city) ? cities.push(city) : null);
+  return cities;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -207,7 +205,7 @@ describe('Testing challenge 1', () => {
   });
 });
 
-xdescribe('Testing challenge 2', () => {
+describe('Testing challenge 2', () => {
   test('It should return true if the input contains a lower case w', () => {
     expect(containsW('hello world')).toBe(true);
   });
@@ -219,7 +217,7 @@ xdescribe('Testing challenge 2', () => {
   });
 });
 
-xdescribe('Testing challenge 3', () => {
+describe('Testing challenge 3', () => {
   test('It should return true if the input is a number', () => {
     expect(isNum(1234567890)).toBeTruthy();
     expect(isNum('12345')).toBeTruthy();
@@ -233,7 +231,7 @@ xdescribe('Testing challenge 3', () => {
   });
 });
 
-xdescribe('Testing challenge 4', () => {
+describe('Testing challenge 4', () => {
   test('It should return true if the input contains the word "world" in lower case', () => {
     expect(containsWorld('hello world')).toBe(true);
   });
@@ -245,7 +243,7 @@ xdescribe('Testing challenge 4', () => {
   });
 });
 
-xdescribe('Testing challenge 5', () => {
+describe('Testing challenge 5', () => {
   test('It should only return words that begin with a capital letter', () => {
     const capitalResult = isCapitalized('We only want to Return the Words that begin With a capital Letter');
 
@@ -258,7 +256,7 @@ xdescribe('Testing challenge 5', () => {
   });
 });
 
-xdescribe('Testing challenge 6', () => {
+describe('Testing challenge 6', () => {
   let cities = ['Cleveland', 'San Diego', 'Birmingham', 'Seattle', 'Miami', 'New York City', 'Omaha', 'Portland', 'Austin', 'Boston', 'Newport Beach', 'Hoboken'];
 
   test('It should return the cities whose names begin with the letters A through J', () => {

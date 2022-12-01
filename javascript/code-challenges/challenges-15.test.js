@@ -11,8 +11,11 @@ Write a function named screenForNames that takes in an array of strings and uses
 ------------------------------------------------------------------------------------------------ */
 
 const screenForNames = (arr) => {
-  // Solution code here...
-}
+  let regex = /(Dr.|Ms.|Mrs.|Mr.) {1}\w/gm;
+  let names = [];
+  arr.forEach(name => regex.test(name) === true ? names.push(name) : null);
+  return names;
+};
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
@@ -23,7 +26,7 @@ For example, ['apple', 'banana', 'MacGyver'] returns ['Apple', 'Banana', 'MacGyv
 ------------------------------------------------------------------------------------------------ */
 
 const toTitleCase = (arr) => {
-  // Solution code here...
+  return arr.map(word => word.charAt(0).toUpperCase() + word.slice(1));
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -98,7 +101,8 @@ let starWarsData = [{
 }];
 
 let biggerThanLuke = (arr) => {
-  // Solution code here...
+  let compare = 77;
+  return arr.filter(person => person.mass > parseInt(compare)).map(person => person.name).join(' - ');
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -116,11 +120,19 @@ This data could be sorted by name or price.
 ------------------------------------------------------------------------------------------------ */
 
 const sortBy = (property, arr) => {
-  // Solution code here...
+  return arr.sort((a,b) => {
+    let compare = 0;
+    if(a[property] > b[property]) {
+      compare = 1;
+    } else if(a[property] < b[property]) {
+      compare = -1;
+    }
+    return compare;
+  });
 };
 
 /* ------------------------------------------------------------------------------------------------
-CHALLENGE 5 
+CHALLENGE 5
 
 Write a function that determines if a given URL is secure, beginning with https://
 
@@ -132,11 +144,12 @@ https://secure.com returns true because the URL is secure
 https:/missingslash.org returns false because the URL is malformed
 ------------------------------------------------------------------------------------------------ */
 const isSecure = (url) => {
-  // Solution code here...
+  let regex = /(?:https:\/\/)/gm;
+  return regex.test(url);
 };
 
 /* ------------------------------------------------------------------------------------------------
-CHALLENGE 6 
+CHALLENGE 6
 
 Write a function named detectTicTacToeWin that accepts a two-dimensional array of strings. Each string is guaranteed to be either "X", "O" or an empty string. Your function should check to see if any row, column, or either diagonal direction has three matching "X" or "O" symbols (non-empty strings), three-in-a-line.
 
@@ -155,7 +168,53 @@ Here is a sample board:
 ------------------------------------------------------------------------------------------------ */
 
 const detectTicTacToeWin = (board) => {
-  // Solution code here...
+  function checkWinner() {
+    if(board[0][0] === board[0][1] && board[0][0] === board[0][2]) {
+      return true;
+    } else if(board[1][0] === board[1][1] && board[1][0] === board[1][2]) {
+      return true;
+    } else if(board[2][0] === board[2][1] && board[2][0] === board[2][2]) {
+      return true;
+    } else if(board[0][0] === board[1][0] && board[0][0] === board[2][0]) {
+      return true;
+    } else if(board[0][1] === board[1][1] && board[0][1] === board[2][1]) {
+      return true;
+    } else if(board[0][2] === board[1][2] && board[0][2] === board[2][2]) {
+      return true;
+    } else if (board[0][0] === board[1][1] && board[0][0] === board[2][2]) {
+      return true;
+    } else if(board[0][2] === board[1][1] && board[0][2] === board[2][0]) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  function noBlankRow() {
+    if(board[0][0] === '' && board[0][1] === '' && board[0][2] === '') {
+      return false;
+    } else if(board[1][0] === '' && board[1][1] === '' && board[1][2] === '') {
+      return false;
+    } else if(board[2][0] === '' && board[2][1] === '' && board[2][2] === '') {
+      return false;
+    } else if(board[0][0] === '' && board[1][0] === '' && board[2][0] === '') {
+      return false;
+    } else if(board[0][1] === '' && board[1][1] === '' && board[2][1] === '') {
+      return false;
+    } else if(board[0][2] === '' && board[1][2] === '' && board[2][2] === '') {
+      return false;
+    } else if (board[0][0] === '' && board[1][1] === '' && board[2][2] === '') {
+      return false;
+    } else if(board[0][2] === '' && board[1][1] === '' && board[2][0] === '') {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  let winner = checkWinner();
+  let noBlanks = noBlankRow();
+  return winner && noBlanks;
 };
 
 /* ------------------------------------------------------------------------------------------------
